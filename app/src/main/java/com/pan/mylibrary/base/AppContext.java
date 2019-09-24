@@ -2,6 +2,8 @@ package com.pan.mylibrary.base;
 
 import android.app.Application;
 
+import com.facebook.drawee.backends.pipeline.Fresco;
+
 /**
  * @author Pan
  * @date 2019/9/21.
@@ -18,6 +20,6 @@ public class AppContext extends Application {
     public void onCreate() {
         super.onCreate();
         sContext = this;
-
+        Fresco.initialize(this);
     }
 }

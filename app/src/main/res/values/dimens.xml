@@ -5,4 +5,20 @@
     <dimen name="appbar_padding">16dp</dimen>
     <dimen name="fab_margin">16dp</dimen>
     <dimen name="appbar_padding_top">8dp</dimen>
+    <dimen name="nav_header_vertical_spacing">8dp</dimen>
+    <dimen name="nav_header_height">176dp</dimen>
+
+    <dimen name="text_29px">10sp</dimen>
+    <dimen name="text_32px">11sp</dimen>
+    <dimen name="text_35px">12sp</dimen>
+    <dimen name="text_40px">14sp</dimen>
+    <dimen name="text_43px">15sp</dimen>
+    <dimen name="text_46px">16sp</dimen>
+    <dimen name="text_49px">17sp</dimen>
+    <dimen name="text_52px">18sp</dimen>
+    <dimen name="text_58px">20sp</dimen>
+    <dimen name="text_63px">22sp</dimen>
+    <dimen name="text_69px">24sp</dimen>
+    <dimen name="text_72px">25sp</dimen>
+    <dimen name="text_86px">30sp</dimen>
 </resources>

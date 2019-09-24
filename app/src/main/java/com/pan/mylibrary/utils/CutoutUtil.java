@@ -7,8 +7,7 @@ import java.lang.reflect.Method;
 
 /**
  * Create by panchenhuan on 2018/6/12 13:35
- *
- * @Description:
+ * @Description: 适配低版本凹口屏
  */
 public class CutoutUtil {
     public static int notchHeight = -1;

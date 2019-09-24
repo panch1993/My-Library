@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:background="#079C7D"
+        android:layout_height="@dimen/sw_px_500"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:orientation="vertical">
+
+    <com.facebook.drawee.view.SimpleDraweeView
+            android:layout_gravity="center"
+            app:roundAsCircle="true"
+            app:placeholderImage="@mipmap/ic_launcher"
+            android:layout_width="@dimen/sw_px_150"
+            android:layout_height="@dimen/sw_px_150" />
+</FrameLayout>
