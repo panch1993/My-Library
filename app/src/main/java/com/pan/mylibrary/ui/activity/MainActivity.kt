@@ -39,6 +39,13 @@ class MainActivity : BaseActivity() {
         drawer_layout.addDrawerListener(toggle)
 
         tv_version_name.text = BuildConfig.VERSION_NAME
+
+        nav_view.setNavigationItemSelectedListener {
+            when (it.itemId) {
+                R.id.nav_home -> startActivity(ScrollableActivity::class.java)
+            }
+            true
+        }
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

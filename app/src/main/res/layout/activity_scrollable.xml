@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.swiperefreshlayout.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/srl"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    <com.pan.mylibrary.ui.widget.scrollVp.ScrollableLayout
+            android:id="@+id/sl_layout"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        <TextView
+                android:layout_width="match_parent"
+                android:text="HEAD VIEW"
+                android:gravity="center"
+                android:textColor="@color/white"
+                android:background="@color/blue_default"
+                android:layout_height="@dimen/sw_px_450" />
+
+       <!-- <ScrollView
+                android:id="@+id/nsv"
+                android:background="@color/black"
+                android:layout_width="match_parent"
+                android:layout_height="3000dp" />-->
+        <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_content"
+                android:background="@color/yellow_default"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+    </com.pan.mylibrary.ui.widget.scrollVp.ScrollableLayout>
+</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>

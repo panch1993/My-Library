@@ -9,6 +9,7 @@
     <color name="red_default">#FF5545</color>
     <color name="yellow_default">#f0a824</color>
 
+    <color name="black">#000</color>
     <color name="gray_22">#222222</color>
     <color name="gray_33">#333333</color>
     <color name="gray_44">#444444</color>
@@ -21,4 +22,5 @@
     <color name="gray_f3">#f3f3f3</color>
     <color name="gray_f9">#f9f9f9</color>
     <color name="gray_fe">#fefefe</color>
+    <color name="white">#fff</color>
 </resources>
