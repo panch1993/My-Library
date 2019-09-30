@@ -3,7 +3,7 @@
         android:id="@+id/srl"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-    <com.pan.mylibrary.ui.widget.scrollVp.ScrollableLayout
+    <com.pan.mylibrary.widget.scrollVp.ScrollableLayout
             android:id="@+id/sl_layout"
             android:orientation="vertical"
             android:layout_width="match_parent"
@@ -17,15 +17,14 @@
                 android:background="@color/blue_default"
                 android:layout_height="@dimen/sw_px_450" />
 
-       <!-- <ScrollView
-                android:id="@+id/nsv"
-                android:background="@color/black"
+        <androidx.viewpager.widget.ViewPager
+                android:id="@+id/vp"
                 android:layout_width="match_parent"
-                android:layout_height="3000dp" />-->
-        <androidx.recyclerview.widget.RecyclerView
+                android:layout_height="match_parent" />
+        <!--<androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rv_content"
                 android:background="@color/yellow_default"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" />
-    </com.pan.mylibrary.ui.widget.scrollVp.ScrollableLayout>
+                android:layout_height="match_parent" />-->
+    </com.pan.mylibrary.widget.scrollVp.ScrollableLayout>
 </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>

@@ -1,4 +1,4 @@
-package com.pan.mylibrary.ui.widget;
+package com.pan.mylibrary.widget.chart;
 
 import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
@@ -33,11 +33,14 @@ public class ChartView extends View {
     private int mTextSize = ResourceUtil.getDimens(R.dimen.text_32px);
 
     public static final int DEFAULT_MAX_BAR_VALUE = 5;
+
+    //最大Y轴数值
     public static final int DEFAULT_MAX_LINE_VALUE = 10;
 
     private int mMaxBarValue, mMaxLineValue;
 
     public static final int X_AXIS_NUM = 10;
+
     private int mBarWidth = ResourceUtil.getDimens(R.dimen.sw_px_20);
     private int mXaxisTextWidth = ResourceUtil.getDimens(R.dimen.sw_px_60);
 
@@ -51,6 +54,7 @@ public class ChartView extends View {
 //    private List<Integer> mLineValue;
 //    private List<String> mStrings;
     private List<IData> mDataList;
+//    private Map<String,List<IData>> mDataMap;
 
     private int mItemWidth;
     private float mAnimatedFraction;
@@ -99,9 +103,11 @@ public class ChartView extends View {
             invalidate();
         });
         mDataList = new ArrayList<>();
+//        mDataMap = new HashMap<>();
+
     }
 
-    public void setData(List<IData> data) {
+    public void setNewData(List<IData> data) {
         if (mDataList.equals(data)) {
             return;
         }
@@ -128,8 +134,7 @@ public class ChartView extends View {
         mRectDraw.top = mRect.top + mTextSize + 10;
 
 
-        mItemWidth = mRectDraw.width() / 7;
-
+        mItemWidth = mRectDraw.width() / mDataList.size();
 
         mLinearGradient = new LinearGradient(0, mRectDraw.bottom, 0, mRectDraw.top, Color.TRANSPARENT, mLineChartColor, Shader.TileMode.CLAMP);
     }
@@ -175,6 +180,11 @@ public class ChartView extends View {
         return true;
     }*/
 
+
+    /**
+     * 绘制坐标轴
+     * @param canvas
+     */
     private void drawAxis(Canvas canvas) {
         int startX = mRectDraw.left;
         int endX = mRectDraw.right;
@@ -183,7 +193,7 @@ public class ChartView extends View {
         mPaintAxis.setColor(mAxisColor);
         //底部x轴
         canvas.drawLine(startX, bottomY, endX, bottomY, mPaintAxis);
-        //两边y轴
+        //两边数值y轴
         canvas.drawLine(startX, bottomY, startX, mRect.top, mPaintAxis);
 //        canvas.drawLine(endX, bottomY, endX, mRect.top, mPaintAxis);
         //x轴若干,竖轴坐标
@@ -194,7 +204,9 @@ public class ChartView extends View {
         mTextPaint.setColor(mTextColor);
         for (int i = 1; i <= X_AXIS_NUM; i++) {
             int startY = bottomY - i * space;
+            //横向
             canvas.drawLine(startX, startY, endX, startY, mPaintAxis);
+            //y轴数值
             mTextPaint.setTextAlign(Paint.Align.RIGHT);
             canvas.drawText(lineSpace * i + "", startX - 5, startY, mTextPaint);
 //            mTextPaint.setTextAlign(Paint.Align.LEFT);
@@ -220,6 +232,10 @@ public class ChartView extends View {
         }
     }*/
 
+    /**
+     * 绘制数据
+     * @param canvas
+     */
     private void drawLineValue(Canvas canvas) {
         int maxHeight = mRectDraw.bottom - mRectDraw.top;
         Path path = new Path();
@@ -228,18 +244,18 @@ public class ChartView extends View {
             mTextPaint.setColor(mLineChartColor);
             IData iData = mDataList.get(i);
             int value = iData.getDataValue();
-            int x = mRectDraw.left + mItemWidth / 2 - mBarWidth / 2 + i * mItemWidth+ mBarWidth / 2;
+            int x = mRectDraw.left + mItemWidth / 2 - mBarWidth / 2 + i * mItemWidth + mBarWidth / 2;
             float y = mRectDraw.bottom - mAnimatedFraction * maxHeight * value / mMaxLineValue;
             if (value > 0) {
-
-            canvas.drawText(Integer.toString(value), x/* + mBarWidth + 5*/, y, mTextPaint);
+                canvas.drawText(Integer.toString(value), x, y, mTextPaint);
             }
+            //曲线
             path.lineTo(x, y);
 
-            //绘制X轴
+            //绘制X轴文字
             mTextPaint.setTextAlign(Paint.Align.CENTER);
             mTextPaint.setColor(mTextColor);
-            canvas.drawText(iData.getDataLabel(), x , mRectDraw.bottom + mTextSize, mTextPaint);
+            canvas.drawText(iData.getDataLabel(), x, mRectDraw.bottom + mTextSize, mTextPaint);
         }
         path.lineTo(mRectDraw.right, mRectDraw.bottom);
         //绘制实心区域
@@ -250,12 +266,6 @@ public class ChartView extends View {
         mPaintLine.setShader(null);
         mPaintLine.setStyle(Paint.Style.STROKE);
         canvas.drawPath(path, mPaintLine);
-    }
-
-    public interface IData {
-        int getDataValue();
-
-        String getDataLabel();
     }
 //    @Override
 //    public boolean onTouchEvent(MotionEvent event) {

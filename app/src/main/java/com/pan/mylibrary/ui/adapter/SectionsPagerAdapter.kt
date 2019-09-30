@@ -7,26 +7,26 @@ import androidx.fragment.app.FragmentPagerAdapter
 import com.pan.mylibrary.R
 import com.pan.mylibrary.ui.fragment.ChartViewFragment
 import com.pan.mylibrary.ui.fragment.PlaceholderFragment
+import com.pan.mylibrary.ui.fragment.RadarViewFragment
 
 private val TAB_TITLES = arrayOf(
-    R.string.tab_text_1,
-    R.string.tab_text_2,
-    R.string.tab_text_3
+    R.string.tab_chart,
+    R.string.tab_radar
 )
 
 /**
  * A [FragmentPagerAdapter] that returns a fragment corresponding to
  * one of the sections/tabs/pages.
  */
-class SectionsPagerAdapter(private val context: Context, fm: FragmentManager) : FragmentPagerAdapter(fm) {
+class SectionsPagerAdapter(private val context: Context, fm: FragmentManager) :
+    FragmentPagerAdapter(fm) {
 
     override fun getItem(position: Int): Fragment {
-        // getItem is called to instantiate the fragment for the given page.
-        // Return a PlaceholderFragment (defined as a static inner class below).
-        if (position == 2) {
-            return ChartViewFragment()
+        return when (TAB_TITLES[position]) {
+            R.string.tab_chart -> ChartViewFragment()
+            R.string.tab_radar -> RadarViewFragment()
+            else -> PlaceholderFragment.newInstance(position + 1)
         }
-        return PlaceholderFragment.newInstance(position + 1)
     }
 
     override fun getPageTitle(position: Int): CharSequence? {

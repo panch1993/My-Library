@@ -1,10 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:orientation="vertical" android:layout_width="match_parent"
+        android:padding="@dimen/sw_px_35"
         android:layout_height="match_parent">
 
-    <com.pan.mylibrary.ui.widget.ChartView
+    <com.pan.mylibrary.widget.chart.ChartView
             android:id="@+id/chart_view"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_marginBottom="@dimen/sw_px_35"
+            android:layout_weight="1"
+            android:layout_height="0dp" />
+
+    <Button
+            android:text="Random"
+            android:id="@+id/bt_random"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    <Button
+            android:text="Animation"
+            android:id="@+id/bt_anim"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
 </LinearLayout>

@@ -1,4 +1,4 @@
-package com.pan.mylibrary.ui.widget.scrollVp;
+package com.pan.mylibrary.widget.scrollVp;
 
 import android.annotation.TargetApi;
 import android.content.Context;
@@ -39,7 +39,7 @@ public class ScrollableLayout extends LinearLayout implements SwipeRefreshLayout
     private int mCurY;//当前Y坐标
     private int mLastScrollerY;
     private boolean needCheckUpDown;//需要检查当前滑动方向
-    private boolean upDown;//是否是上下滑动
+    private boolean verticalMove;//是否是上下滑动
     private boolean mDisallowIntercept;
     private boolean isClickHead;//头部点击
     private boolean isClickHeadExpand;//是否点击在头部扩大范围
@@ -104,7 +104,7 @@ public class ScrollableLayout extends LinearLayout implements SwipeRefreshLayout
     }
 
     public boolean canPtr() {
-        return upDown && mCurY == minY && mHelper.isTop();
+        return verticalMove && mCurY == minY && mHelper.isTop();
     }
 
     public void requestTestLayoutDisallowInterceptTouchEvent(boolean disallowIntercept) {
@@ -123,7 +123,7 @@ public class ScrollableLayout extends LinearLayout implements SwipeRefreshLayout
             case MotionEvent.ACTION_DOWN:
                 mDisallowIntercept = false;
                 needCheckUpDown = true;
-                upDown = true;
+                verticalMove = true;
                 mDownX = currentX;
                 mDownY = currentY;
                 mLastY = currentY;
@@ -140,13 +140,13 @@ public class ScrollableLayout extends LinearLayout implements SwipeRefreshLayout
                 if (needCheckUpDown) {
                     if (shiftX > mTouchSlop && shiftX > shiftY) {
                         needCheckUpDown = false;
-                        upDown = false;
+                        verticalMove = false;
                     } else if (shiftY > mTouchSlop && shiftY > shiftX) {
                         needCheckUpDown = false;
-                        upDown = true;
+                        verticalMove = true;
                     }
                 }
-                if (upDown && shiftY > mTouchSlop && shiftY > shiftX && (!isSticky() || mHelper.isTop() || isClickHeadExpand)) {
+                if (verticalMove && shiftY > mTouchSlop && shiftY > shiftX && (!isSticky() || mHelper.isTop() || isClickHeadExpand)) {
                     if (childViewPager != null) {
                         childViewPager.requestDisallowInterceptTouchEvent(true);
                     }
@@ -155,7 +155,7 @@ public class ScrollableLayout extends LinearLayout implements SwipeRefreshLayout
                 mLastY = currentY;
                 break;
             case MotionEvent.ACTION_UP:
-                if (upDown && shiftY > shiftX && shiftY > mTouchSlop) {
+                if (verticalMove && shiftY > shiftX && shiftY > mTouchSlop) {
                     mVelocityTracker.computeCurrentVelocity(1000, mMaximumVelocity);
                     float yVelocity = -mVelocityTracker.getYVelocity();
                     boolean disallowChild = false;
@@ -303,7 +303,7 @@ public class ScrollableLayout extends LinearLayout implements SwipeRefreshLayout
 
     @Override
     public boolean canChildScrollUp(@NonNull SwipeRefreshLayout parent, @Nullable View child) {
-        return !isHeadTop() || (isHeadTop() && !upDown);//true拦截触摸事件
+        return !isHeadTop() || (isHeadTop() && !verticalMove);//true拦截触摸事件
 //        return !isHeadTop();
     }
 

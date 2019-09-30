@@ -1,4 +1,4 @@
-package com.pan.mylibrary.ui.widget.scrollVp;
+package com.pan.mylibrary.widget.scrollVp;
 
 import android.annotation.SuppressLint;
 import android.os.Build;
