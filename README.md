@@ -5,8 +5,7 @@
 2. RadarView
 
 <center class="half">
-    <img src="https://github.com/panch1993/My-Library/blob/master/img/WechatIMG139.jpeg" width="200"/>
-    <img src="https://github.com/panch1993/My-Library/blob/master/img/WechatIMG140.jpeg" width="200"/>
+    <img src="https://github.com/panch1993/My-Library/blob/master/img/WechatIMG139.jpeg" width="200"/><img src="https://github.com/panch1993/My-Library/blob/master/img/WechatIMG140.jpeg" width="200"/>
 </center>
 
 #### 手势类
