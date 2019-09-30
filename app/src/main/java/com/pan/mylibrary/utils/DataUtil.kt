@@ -17,7 +17,7 @@ object DataUtil {
         return list
     }
 
-    fun generateRandomData(bound:Int = 1000,size: Int = 10): ArrayList<IData> {
+    fun generateRandomData(bound:Int = 100,size: Int = 10): ArrayList<IData> {
         val list = ArrayList<IData>()
         val random = Random()
         for (i in 0..size) {

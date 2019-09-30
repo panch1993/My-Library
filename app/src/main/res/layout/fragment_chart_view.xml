@@ -11,6 +11,12 @@
             android:layout_weight="1"
             android:layout_height="0dp" />
 
+    <androidx.appcompat.widget.AppCompatSeekBar
+            android:id="@+id/seek_bar"
+            android:layout_width="match_parent"
+            android:max="30"
+            android:progress="10"
+            android:layout_height="wrap_content" />
     <Button
             android:text="Random"
             android:id="@+id/bt_random"

@@ -2,6 +2,7 @@ package com.pan.mylibrary.widget.chart;
 
 import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
@@ -13,9 +14,14 @@ import android.graphics.Rect;
 import android.graphics.Shader;
 import android.text.TextPaint;
 import android.util.AttributeSet;
+import android.view.GestureDetector;
+import android.view.MotionEvent;
 import android.view.View;
 
 import com.pan.mylibrary.R;
+import com.pan.mylibrary.base.AppContext;
+import com.pan.mylibrary.base.Config;
+import com.pan.mylibrary.utils.KLog;
 import com.pan.mylibrary.utils.ResourceUtil;
 
 import java.util.ArrayList;
@@ -25,7 +31,7 @@ import java.util.List;
  * Create by panchenhuan on 2018/12/3 11:36 AM
  * Description:学习图表
  */
-public class ChartView extends View {
+public class ChartView extends View implements GestureDetector.OnGestureListener {
     private int mAxisColor = ResourceUtil.getColor(R.color.gray_88);
     private int mBarColor = ResourceUtil.getColor(R.color.blue_default);
     private int mLineChartColor = ResourceUtil.getColor(R.color.red_default);
@@ -61,6 +67,7 @@ public class ChartView extends View {
     private ValueAnimator mValueAnimator;
     private CornerPathEffect mCornerPathEffect;
     private LinearGradient mLinearGradient;
+    private GestureDetector gestureDetector;
 
     public ChartView(Context context) {
         this(context, null);
@@ -85,7 +92,7 @@ public class ChartView extends View {
         mPaintLine.setColor(mLineChartColor);
         mPaintLine.setTextSize(mTextSize);
         mCornerPathEffect = new CornerPathEffect(50);
-        mPaintLine.setPathEffect(mCornerPathEffect);
+//        mPaintLine.setPathEffect(mCornerPathEffect);
 
 
         mTextPaint = new TextPaint(Paint.ANTI_ALIAS_FLAG);
@@ -97,14 +104,14 @@ public class ChartView extends View {
         mRectDraw = new Rect();
 
         mValueAnimator = ObjectAnimator.ofFloat(0, 1);
-        mValueAnimator.setDuration(1500);
+        mValueAnimator.setDuration(Config.DEFAULT_ANIM_DURATION);
         mValueAnimator.addUpdateListener(animation -> {
             mAnimatedFraction = animation.getAnimatedFraction();
             invalidate();
         });
         mDataList = new ArrayList<>();
 //        mDataMap = new HashMap<>();
-
+        gestureDetector = new GestureDetector(AppContext.getInstance(), this);
     }
 
     public void setNewData(List<IData> data) {
@@ -113,6 +120,7 @@ public class ChartView extends View {
         }
         mDataList.clear();
         mDataList.addAll(data);
+        mItemWidth = mRectDraw.width() / mDataList.size();
         mValueAnimator.start();
     }
 
@@ -134,8 +142,6 @@ public class ChartView extends View {
         mRectDraw.top = mRect.top + mTextSize + 10;
 
 
-        mItemWidth = mRectDraw.width() / mDataList.size();
-
         mLinearGradient = new LinearGradient(0, mRectDraw.bottom, 0, mRectDraw.top, Color.TRANSPARENT, mLineChartColor, Shader.TileMode.CLAMP);
     }
 
@@ -144,6 +150,7 @@ public class ChartView extends View {
         drawAxis(canvas);
 
         if (!mDataList.isEmpty()) {
+            mItemWidth = mRectDraw.width() / mDataList.size();
             int max = DEFAULT_MAX_LINE_VALUE;
             for (IData iData : mDataList) {
                 max = Math.max(max, iData.getDataValue());
@@ -267,11 +274,46 @@ public class ChartView extends View {
         mPaintLine.setStyle(Paint.Style.STROKE);
         canvas.drawPath(path, mPaintLine);
     }
-//    @Override
-//    public boolean onTouchEvent(MotionEvent event) {
-//        if (event.getAction() == MotionEvent.ACTION_DOWN) {
-//            invalidate();
-//        }
-//        return super.onTouchEvent(event);
-//    }
+
+    @SuppressLint("ClickableViewAccessibility")
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        return gestureDetector.onTouchEvent(event);
+    }
+    @Override
+    public boolean onDown(MotionEvent e) {
+        KLog.d("onDown");
+        return true;
+    }
+
+    @Override
+    public void onShowPress(MotionEvent e) {
+        KLog.d("onShowPress");
+
+    }
+
+    @Override
+    public boolean onSingleTapUp(MotionEvent e) {
+        KLog.d("onSingleTapUp");
+        return false;
+    }
+
+    @Override
+    public boolean onScroll(MotionEvent e1, MotionEvent e2, float distanceX, float distanceY) {
+        KLog.d("onScroll");
+        return false;
+    }
+
+    @Override
+    public void onLongPress(MotionEvent e) {
+        KLog.d("onLongPress");
+
+    }
+
+    @Override
+    public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
+        KLog.d("onFling");
+        return false;
+    }
+
 }

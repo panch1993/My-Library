@@ -16,6 +16,7 @@ import android.view.View;
 import androidx.annotation.Nullable;
 
 import com.pan.mylibrary.R;
+import com.pan.mylibrary.base.Config;
 import com.pan.mylibrary.utils.MUtil;
 import com.pan.mylibrary.utils.ResourceUtil;
 
@@ -85,7 +86,7 @@ public class RadarChartView extends View {
 
 
         mValueAnimator = ObjectAnimator.ofFloat(0, 1);
-        mValueAnimator.setDuration(1500);
+        mValueAnimator.setDuration(Config.DEFAULT_ANIM_DURATION);
         mValueAnimator.addUpdateListener(animation -> {
             mAnimatedFraction = animation.getAnimatedFraction();
             invalidate();

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:padding="@dimen/sw_px_35"
+        android:layout_height="wrap_content">
+
+    <TextView
+            android:id="@+id/tv_anim"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:gravity="center"
+            android:text="Anim Duration"
+            app:layout_constraintBottom_toBottomOf="@id/et_anim_duration"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+            android:id="@+id/et_anim_duration"
+            android:layout_width="0dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:hint="animation duration"
+            android:inputType="number"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toEndOf="@+id/tv_anim"
+            app:layout_constraintTop_toTopOf="@+id/tv_anim" />
+</androidx.constraintlayout.widget.ConstraintLayout>

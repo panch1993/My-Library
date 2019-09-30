@@ -1,8 +1,11 @@
 package com.pan.mylibrary.base;
 
 import android.app.Application;
+import android.content.Context;
+import android.content.SharedPreferences;
 
 import com.facebook.drawee.backends.pipeline.Fresco;
+import com.pan.mylibrary.utils.SpUtil;
 
 /**
  * @author Pan
@@ -21,5 +24,12 @@ public class AppContext extends Application {
         super.onCreate();
         sContext = this;
         Fresco.initialize(this);
+
+        //信息摘要
+        SharedPreferences sp = getSharedPreferences("pans_lib.pref", Context.MODE_PRIVATE);
+        SpUtil.get().init(sp);
+
+        Config.reload();
+
     }
 }
