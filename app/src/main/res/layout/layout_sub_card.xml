@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+       xmlns:tools="http://schemas.android.com/tools"
+       android:layout_width="match_parent"
+       android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/ll_simple"
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_height="match_parent">
+        <ImageView
+            android:id="@+id/iv_block_icon"
+            android:layout_width="55dp"
+            android:src="@drawable/ic_menu_gallery"
+            android:layout_height="55dp"/>
+
+        <TextView
+            android:id="@+id/tv_block_name"
+            android:layout_width="match_parent"
+            android:maxLines="1"
+            android:ellipsize="end"
+            android:gravity="center"
+                android:text="板块描述"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+
+    <include layout="@layout/layout_sub_card_detail"
+        android:visibility="gone"/>
+
+</merge>

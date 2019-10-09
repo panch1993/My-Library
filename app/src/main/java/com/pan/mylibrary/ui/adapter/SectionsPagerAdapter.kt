@@ -5,13 +5,15 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
 import com.pan.mylibrary.R
+import com.pan.mylibrary.ui.fragment.CardGroupFragment
 import com.pan.mylibrary.ui.fragment.ChartViewFragment
 import com.pan.mylibrary.ui.fragment.PlaceholderFragment
 import com.pan.mylibrary.ui.fragment.RadarViewFragment
 
 private val TAB_TITLES = arrayOf(
     R.string.tab_chart,
-    R.string.tab_radar
+    R.string.tab_radar,
+    R.string.tab_card
 )
 
 /**
@@ -25,6 +27,7 @@ class SectionsPagerAdapter(private val context: Context, fm: FragmentManager) :
         return when (TAB_TITLES[position]) {
             R.string.tab_chart -> ChartViewFragment()
             R.string.tab_radar -> RadarViewFragment()
+            R.string.tab_card -> CardGroupFragment()
             else -> PlaceholderFragment.newInstance(position + 1)
         }
     }

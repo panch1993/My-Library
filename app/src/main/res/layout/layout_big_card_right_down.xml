@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/vg_big_card_2"
+    app:cardBackgroundColor="@color/blue_default"
+    app:cardCornerRadius="0dp"
+    app:cardElevation="3dp"
+    android:layout_width="233dp"
+    android:layout_height="113dp"
+    android:layout_marginTop="@dimen/sw_px_24"
+    android:tag="@string/big_card">
+
+    <include
+        layout="@layout/layout_big_card_detail"
+        android:visibility="gone"/>
+
+    <include
+        layout="@layout/layout_big_card_image"/>
+</androidx.cardview.widget.CardView>

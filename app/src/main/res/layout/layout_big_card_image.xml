@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/fl_img"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.facebook.drawee.view.SimpleDraweeView
+        android:id="@+id/sv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+    <TextView
+        android:id="@+id/tv_block_name"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/sw_px_60"
+        android:gravity="center_vertical|end"
+        android:text="描述"
+        android:paddingEnd="5dp"
+        android:maxLines="1"
+        android:ellipsize="end"
+        android:layout_gravity="bottom"/>
+</FrameLayout>

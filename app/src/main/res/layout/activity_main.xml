@@ -19,13 +19,26 @@
             app:headerLayout="@layout/layout_drawer_head"
             app:menu="@menu/main_drawer">
 
+        <View
+                android:layout_width="match_parent"
+                android:background="@color/gray_eb"
+                android:layout_marginStart="@dimen/sw_px_35"
+                android:layout_marginEnd="@dimen/sw_px_35"
+                android:layout_gravity="bottom"
+                android:layout_marginBottom="@dimen/sw_px_100"
+                android:layout_height="1dp" />
         <TextView
                 android:id="@+id/tv_version_name"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="@dimen/sw_px_100"
+                android:gravity="center_vertical"
+                android:paddingStart="@dimen/sw_px_35"
+                android:drawableTint="@color/gray_66"
+                android:drawableStart="@drawable/ic_version"
+                android:drawablePadding="@dimen/sw_px_35"
                 android:layout_gravity="bottom"
-                android:padding="@dimen/sw_px_35"
-                android:textColor="@color/gray_44"
+                android:textColor="@color/gray_66"
+                android:textStyle="bold"
                 android:textSize="@dimen/text_32px"
                 tools:text="1.0.0" />
     </com.google.android.material.navigation.NavigationView>

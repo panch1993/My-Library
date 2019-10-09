@@ -130,7 +130,7 @@ public class RadarChartView extends View {
 
 
         mPaint.setStyle(Paint.Style.FILL);
-        drawPoints(canvas, radius * 5.1f - mTextOffSet);
+        drawPoints(canvas, radius * 5.25f - mTextOffSet);
 
         drawValuePart(canvas, radius * 4);
 

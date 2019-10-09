@@ -10,8 +10,10 @@ import android.graphics.CornerPathEffect;
 import android.graphics.LinearGradient;
 import android.graphics.Paint;
 import android.graphics.Path;
+import android.graphics.Point;
 import android.graphics.Rect;
 import android.graphics.Shader;
+import android.os.Vibrator;
 import android.text.TextPaint;
 import android.util.AttributeSet;
 import android.view.GestureDetector;
@@ -68,7 +70,7 @@ public class ChartView extends View implements GestureDetector.OnGestureListener
     private CornerPathEffect mCornerPathEffect;
     private LinearGradient mLinearGradient;
     private GestureDetector gestureDetector;
-
+    private Vibrator vibrator;
     public ChartView(Context context) {
         this(context, null);
     }
@@ -78,7 +80,12 @@ public class ChartView extends View implements GestureDetector.OnGestureListener
     }
 
     public ChartView(Context context, AttributeSet attrs, int defStyleAttr) {
+
         super(context, attrs, defStyleAttr);
+
+
+        vibrator = (Vibrator)getContext().getSystemService(Context.VIBRATOR_SERVICE);
+
         mPaintAxis = new Paint(Paint.ANTI_ALIAS_FLAG);
         mPaintAxis.setStyle(Paint.Style.STROKE);
 
@@ -158,6 +165,11 @@ public class ChartView extends View implements GestureDetector.OnGestureListener
             double ceil = Math.ceil(max * 1.0f / DEFAULT_MAX_LINE_VALUE);
             mMaxLineValue = (int) (ceil * DEFAULT_MAX_LINE_VALUE);
             drawLineValue(canvas);
+        }
+
+        if (pressed) {
+            canvas.drawLine(mRectDraw.left,point.y,mRectDraw.right,point.y,mPaintLine);
+            canvas.drawLine(point.x,mRectDraw.bottom,point.x,mRectDraw.top,mPaintLine);
         }
         /*if (mBarValue != null && !mBarValue.isEmpty()) {
             float max = DEFAULT_MAX_BAR_VALUE;
@@ -275,9 +287,25 @@ public class ChartView extends View implements GestureDetector.OnGestureListener
         canvas.drawPath(path, mPaintLine);
     }
 
+    private boolean pressed;
+    private Point point = new Point();
     @SuppressLint("ClickableViewAccessibility")
     @Override
     public boolean onTouchEvent(MotionEvent event) {
+        switch (event.getAction()) {
+            case MotionEvent.ACTION_MOVE:
+                if (pressed) {
+                    point.x = (int) event.getX();
+                    point.y = (int) event.getY();
+                    invalidate();
+                }
+                break;
+            case MotionEvent.ACTION_UP:
+            case MotionEvent.ACTION_CANCEL:
+                pressed = false;
+                invalidate();
+                break;
+        }
         return gestureDetector.onTouchEvent(event);
     }
     @Override
@@ -301,12 +329,16 @@ public class ChartView extends View implements GestureDetector.OnGestureListener
     @Override
     public boolean onScroll(MotionEvent e1, MotionEvent e2, float distanceX, float distanceY) {
         KLog.d("onScroll");
-        return false;
+        return pressed;
     }
 
     @Override
     public void onLongPress(MotionEvent e) {
         KLog.d("onLongPress");
+        pressed = true;
+        getParent().requestDisallowInterceptTouchEvent(true);
+        vibrator.vibrate(100);
+        invalidate();
 
     }
 

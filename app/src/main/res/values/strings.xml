@@ -15,5 +15,8 @@
 
     <string name="tab_chart">ChartView</string>
     <string name="tab_radar">RadarView</string>
+    <string name="tab_card">CardGroup</string>
 
+    <string name="big_card">big_card</string>
+    <string name="sub_card">sub_card</string>
 </resources>
