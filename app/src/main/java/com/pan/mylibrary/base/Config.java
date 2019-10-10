@@ -14,7 +14,7 @@ public class Config {
 
     //value
     public static long DEFAULT_ANIM_DURATION = 0;
-
+    public static final String DEFAULT_BIRTH_DAY = "1993.06.24 05:22:00";
 
     public static void reload() {
         DEFAULT_ANIM_DURATION = SpUtil.get(ANIM_DURATION,300L);

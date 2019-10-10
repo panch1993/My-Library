@@ -9,6 +9,7 @@
     <color name="red_default">#FF5545</color>
     <color name="yellow_default">#f0a824</color>
 
+    <color name="transparent">#00000000</color>
     <color name="black">#000</color>
     <color name="gray_22">#222222</color>
     <color name="gray_33">#333333</color>

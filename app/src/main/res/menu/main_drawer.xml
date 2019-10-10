@@ -2,7 +2,14 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
        >
-
+    <item android:title="Link">
+        <menu>
+            <item
+                    android:id="@+id/nav_github"
+                    android:icon="@drawable/ic_menu_github"
+                    android:title="GitHub" />
+        </menu>
+    </item>
     <group android:checkableBehavior="single">
         <item
                 android:id="@+id/nav_scr"

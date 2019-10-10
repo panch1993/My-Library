@@ -1,6 +1,8 @@
 package com.pan.mylibrary.ui.activity
 
+import android.content.Intent
 import android.graphics.Color
+import android.net.Uri
 import android.os.Build
 import android.view.Menu
 import android.view.MenuItem
@@ -17,6 +19,7 @@ import com.pan.mylibrary.ui.adapter.SectionsPagerAdapter
 import com.pan.mylibrary.utils.SpUtil
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.dialog_setting.view.*
+import kotlinx.android.synthetic.main.layout_drawer_head.view.*
 import kotlinx.android.synthetic.main.layout_main.*
 
 
@@ -34,6 +37,7 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
 
     override fun initView() {
         view_pager.adapter = SectionsPagerAdapter(this, supportFragmentManager)
+        view_pager.offscreenPageLimit = view_pager.adapter!!.count
         tabs.setupWithViewPager(view_pager)
         /* fab.setOnClickListener { view ->
              Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
@@ -50,6 +54,8 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
         tv_version_name.text = BuildConfig.VERSION_NAME
 
         nav_view.setNavigationItemSelectedListener(this)
+        val inflateHeaderView = nav_view.inflateHeaderView(R.layout.layout_drawer_head)
+        injectOnClick(inflateHeaderView.sdv_user)
     }
 
     private fun showSettingDialog() {
@@ -80,6 +86,11 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
         when (it.itemId) {
             R.id.nav_scr -> startActivity(ScrollableActivity::class.java)
             R.id.nav_nested_scr -> startActivity(NestedScrollableActivity::class.java)
+            R.id.nav_github -> {
+                val uri = Uri.parse("https://github.com/panch1993")
+                val intent = Intent(Intent.ACTION_VIEW, uri)
+                startActivity(intent)
+            }
         }
         return false
     }
@@ -98,5 +109,11 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.main_title, menu)
         return true
+    }
+
+    override fun onClick(v: View) {
+        if (v.id == R.id.sdv_user) {
+            startActivity(LifeActivity::class.java)
+        }
     }
 }

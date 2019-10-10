@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
 import com.pan.mylibrary.R
+import com.pan.mylibrary.base.AppPagerAdapter
 import com.pan.mylibrary.ui.fragment.CardGroupFragment
 import com.pan.mylibrary.ui.fragment.ChartViewFragment
 import com.pan.mylibrary.ui.fragment.PlaceholderFragment
@@ -21,7 +22,7 @@ private val TAB_TITLES = arrayOf(
  * one of the sections/tabs/pages.
  */
 class SectionsPagerAdapter(private val context: Context, fm: FragmentManager) :
-    FragmentPagerAdapter(fm) {
+    AppPagerAdapter(fm) {
 
     override fun getItem(position: Int): Fragment {
         return when (TAB_TITLES[position]) {

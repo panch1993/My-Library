@@ -19,4 +19,6 @@
 
     <string name="big_card">big_card</string>
     <string name="sub_card">sub_card</string>
+    <string name="text_index">Index: %s</string>
+    <string name="text_current">Current: %s (%s)</string>
 </resources>

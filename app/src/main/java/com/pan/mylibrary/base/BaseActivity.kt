@@ -37,6 +37,11 @@ abstract class BaseActivity : AppCompatActivity(), View.OnClickListener {
         requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
         beforeSetContentView(savedInstanceState)
 
+//        immersionBar {
+//            statusBarColor(R.color.transparent)
+//            navigationBarColor(R.color.transparent)
+//        }
+//        ImmersionBar.with(this).init()
         val layoutId = getLayoutId()
         if (layoutId <= 0) throw IllegalAccessException("must active one method(getParentView/getLayoutId)")
         val contentView = View.inflate(this, layoutId, null)

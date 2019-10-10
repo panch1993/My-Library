@@ -7,6 +7,7 @@
         android:orientation="vertical">
 
     <com.facebook.drawee.view.SimpleDraweeView
+            android:id="@+id/sdv_user"
             android:layout_gravity="center"
             app:roundAsCircle="true"
             app:placeholderImage="@mipmap/ic_launcher"
