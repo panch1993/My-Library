@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="TimeView">
+        <attr name="color" format="color" />
+        <attr name="item_margin" format="dimension" />
+        <attr name="show_type" format="integer">
+            <enum name="year" value="0" />
+            <enum name="month" value="1" />
+            <enum name="day" value="2" />
+            <enum name="hour" value="3" />
+            <enum name="min" value="4" />
+            <enum name="sec" value="5" />
+            <enum name="msec" value="6" />
+        </attr>
+    </declare-styleable>
+</resources>

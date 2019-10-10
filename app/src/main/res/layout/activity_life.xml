@@ -131,6 +131,12 @@
                         android:layout_weight="1"
                         android:text="S"
                         android:layout_height="wrap_content" />
+                <Button
+                        android:id="@+id/bt_ms"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:text="MS"
+                        android:layout_height="wrap_content" />
             </LinearLayout>
 
             <androidx.cardview.widget.CardView
@@ -144,6 +150,10 @@
                     android:layout_height="0dp" >
 
                 <com.pan.mylibrary.widget.TimeView
+                        android:id="@+id/time_view"
+                        app:item_margin="@dimen/sw_px_5"
+                        app:show_type="msec"
+                        android:layout_margin="@dimen/sw_px_35"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent" />
             </androidx.cardview.widget.CardView>

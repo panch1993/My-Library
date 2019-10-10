@@ -1,10 +1,12 @@
 package com.pan.mylibrary.ui.activity
 
+import android.view.View
 import android.view.animation.AccelerateDecelerateInterpolator
 import com.google.android.material.appbar.AppBarLayout
 import com.pan.mylibrary.R
 import com.pan.mylibrary.base.BaseActivity
 import com.pan.mylibrary.base.Config
+import com.pan.mylibrary.widget.TimeView
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
@@ -26,7 +28,7 @@ class LifeActivity : BaseActivity() {
     private val backgroundUrl =
         "http://img3.imgtn.bdimg.com/it/u=2521264465,2666829798&fm=26&gp=0.jpg"
 
-    private lateinit var subscribe:Disposable
+    private lateinit var subscribe: Disposable
 
     override fun getLayoutId(): Int = R.layout.activity_life
 
@@ -35,7 +37,7 @@ class LifeActivity : BaseActivity() {
     }
 
     override fun initView() {
-
+        injectOnClick(bt_y, bt_m, bt_d, bt_h, bt_min, bt_s, bt_ms)
         setSupportActionBar(toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.setDisplayShowHomeEnabled(true)
@@ -53,7 +55,7 @@ class LifeActivity : BaseActivity() {
 
         collapsing_toolbar.title = " "
 
-        tv_index.text = getString(R.string.text_index,Config.DEFAULT_BIRTH_DAY)
+        tv_index.text = getString(R.string.text_index, Config.DEFAULT_BIRTH_DAY)
 
 
         subscribe = Observable.interval(0, 50, TimeUnit.MILLISECONDS)
@@ -61,9 +63,25 @@ class LifeActivity : BaseActivity() {
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe {
                 val currentTimeMillis = System.currentTimeMillis()
-                tv_current.text = getString(R.string.text_current,sdf.format(Date(currentTimeMillis)),currentTimeMillis.toString())
+                tv_current.text = getString(
+                    R.string.text_current,
+                    sdf.format(Date(currentTimeMillis)),
+                    currentTimeMillis.toString()
+                )
             }
 
+    }
+
+    override fun onClick(v: View) {
+        when (v) {
+            bt_y -> time_view.setCurrentType(TimeView.Type.YEAR)
+            bt_m -> time_view.setCurrentType(TimeView.Type.MONTH)
+            bt_d -> time_view.setCurrentType(TimeView.Type.DAY)
+            bt_h -> time_view.setCurrentType(TimeView.Type.HOUR)
+            bt_min -> time_view.setCurrentType(TimeView.Type.MIN)
+            bt_s -> time_view.setCurrentType(TimeView.Type.SEC)
+            bt_ms -> time_view.setCurrentType(TimeView.Type.MSEC)
+        }
     }
 
     override fun onDestroy() {
