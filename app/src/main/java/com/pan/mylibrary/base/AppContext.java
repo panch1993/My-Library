@@ -4,7 +4,6 @@ import android.app.Application;
 import android.content.Context;
 import android.content.SharedPreferences;
 
-import com.facebook.drawee.backends.pipeline.Fresco;
 import com.pan.mylibrary.utils.SpUtil;
 
 /**
@@ -23,8 +22,7 @@ public class AppContext extends Application {
     public void onCreate() {
         super.onCreate();
         sContext = this;
-        Fresco.initialize(this);
-
+//        Fresco.initialize(this);
         //信息摘要
         SharedPreferences sp = getSharedPreferences("pans_lib.pref", Context.MODE_PRIVATE);
         SpUtil.get().init(sp);

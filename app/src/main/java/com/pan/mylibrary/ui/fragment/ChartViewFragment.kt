@@ -33,10 +33,12 @@ class ChartViewFragment : BaseFragment(), SeekBar.OnSeekBarChangeListener {
 
     override fun initView() {
         injectOnClick(bt_random, bt_anim)
-        chart_view.setNewData(DataUtil.generateRandomData())
         seek_bar.setOnSeekBarChangeListener(this)
     }
 
+    override fun onFirstVisibleToUser() {
+        chart_view.setNewData(DataUtil.generateRandomData())
+    }
     override fun onClick(v: View) {
         when (v) {
             bt_random -> chart_view.setNewData(DataUtil.generateRandomData(size = seek_bar.progress))

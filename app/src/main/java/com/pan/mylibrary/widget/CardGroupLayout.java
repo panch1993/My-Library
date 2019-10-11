@@ -30,7 +30,7 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.ViewPropertyAnimatorCompat;
 import androidx.core.view.ViewPropertyAnimatorListener;
 
-import com.facebook.drawee.view.SimpleDraweeView;
+import com.bumptech.glide.Glide;
 import com.pan.mylibrary.R;
 import com.pan.mylibrary.utils.MUtil;
 import com.pan.mylibrary.utils.ResourceUtil;
@@ -44,7 +44,7 @@ import java.util.Map;
 /**
  * 最新--卡片组
  * Created by panchenhuan on 17/8/9.
- * todo 17年小贝智投的控件,有时间优化一下
+ * todo 2019-10:  17年小贝智投的控件,有时间优化一下
  */
 
 public class CardGroupLayout extends FrameLayout {
@@ -235,7 +235,7 @@ public class CardGroupLayout extends FrameLayout {
     public CardGroupLayout(@NonNull Context context, @Nullable AttributeSet attrs, @AttrRes int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         mContext = context;
-        initCardGroup();
+//        initCardGroup();
     }
 
     public void setInterceptHander(boolean interceptHander) {
@@ -778,7 +778,7 @@ public class CardGroupLayout extends FrameLayout {
             stockId = "--";
             stockName = "--";
             percent = "--";
-        bigCard.findViewById(R.id.sv).setOnClickListener(new OnClickListener() {
+        bigCard.findViewById(R.id.iv).setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
                     ToastUtil.showToast("暂无数据  888");
@@ -792,7 +792,8 @@ public class CardGroupLayout extends FrameLayout {
         ((TextView) bigCard.findViewById(R.id.tv_percent)).setText(percent);
         ((TextView) bigCard.findViewById(R.id.tv_date)).setText(mTimeMillis+" 802");
         ((ImageView) bigCard.findViewById(R.id.iv_block_icon)).setImageResource(R.drawable.ic_menu_camera);
-        ((SimpleDraweeView) bigCard.findViewById(R.id.sv)).setImageURI(bigCard.getId() == R.id.vg_big_card_1 ? "http://pic1.5442.com/2015/0527/06/03.jpg" : "http://pic26.photophoto.cn/20130319/0008020219680542_b.jpg");
+        Glide.with(getContext()).load(bigCard.getId() == R.id.vg_big_card_1 ? "http://pic1.5442.com/2015/0527/06/03.jpg" : "http://pic26.photophoto.cn/20130319/0008020219680542_b.jpg")
+                .into((ImageView) bigCard.findViewById(R.id.iv));
         bigCard.findViewById(R.id.ll_detail).setOnClickListener(mOnClickListener);
     }
 

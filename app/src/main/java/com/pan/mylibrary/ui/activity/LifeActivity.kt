@@ -6,6 +6,7 @@ import com.google.android.material.appbar.AppBarLayout
 import com.pan.mylibrary.R
 import com.pan.mylibrary.base.BaseActivity
 import com.pan.mylibrary.base.Config
+import com.pan.mylibrary.utils.GlideUtil
 import com.pan.mylibrary.widget.TimeView
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -25,9 +26,6 @@ import kotlin.math.abs
 class LifeActivity : BaseActivity() {
     private val sdf = SimpleDateFormat("yyyy.MM.dd HH:mm:ss", Locale.getDefault())
 
-    private val backgroundUrl =
-        "http://img3.imgtn.bdimg.com/it/u=2521264465,2666829798&fm=26&gp=0.jpg"
-
     private lateinit var subscribe: Disposable
 
     override fun getLayoutId(): Int = R.layout.activity_life
@@ -37,26 +35,36 @@ class LifeActivity : BaseActivity() {
     }
 
     override fun initView() {
+        //交互优化
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+//            TransitionSet().apply {
+//                addTransition(ChangeBounds())
+//                addTransition(ChangeTransform())
+//                addTarget(iv_cir)
+//                window.sharedElementEnterTransition = this
+//                window.sharedElementExitTransition = this
+//                window.sharedElementReturnTransition = this
+//            }
+//        }
         injectOnClick(bt_y, bt_m, bt_d, bt_h, bt_min, bt_s, bt_ms)
         setSupportActionBar(toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.setDisplayShowHomeEnabled(true)
 
-        sdv_bg.setImageURI(backgroundUrl)
+        GlideUtil.load(iv_bg, Config.BACKGROUND_LIFE_URL)
+        GlideUtil.load(iv_cir, Config.HEAD_URL, asCircle = true)
         val s = AccelerateDecelerateInterpolator()
         appbar.addOnOffsetChangedListener(AppBarLayout.OnOffsetChangedListener { appbarLayout, verticalOffset ->
             val collectHeight = appbarLayout.height - toolbar.height
             //计算偏差
             val percent = s.getInterpolation(1 - abs(verticalOffset) * 1.0f / collectHeight)
-            sdv_user.scaleX = percent
-            sdv_user.scaleY = percent
-            sdv_user.alpha = percent
+            iv_cir.scaleX = percent
+            iv_cir.scaleY = percent
+            iv_cir.alpha = percent
         })
 
-        collapsing_toolbar.title = " "
-
         tv_index.text = getString(R.string.text_index, Config.DEFAULT_BIRTH_DAY)
-
+        time_view.setTimeIndex(Config.DEFAULT_BIRTH_DAY)
 
         subscribe = Observable.interval(0, 50, TimeUnit.MILLISECONDS)
             .subscribeOn(Schedulers.io())

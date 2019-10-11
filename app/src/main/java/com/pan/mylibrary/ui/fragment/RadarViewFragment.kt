@@ -25,7 +25,6 @@ class RadarViewFragment : BaseFragment(), SeekBar.OnSeekBarChangeListener,
 
     override fun initView() {
         injectOnClick(bt_random, bt_anim)
-        radar_view.setNewData(DataUtil.generateRandomData(100, 5))
 
         seek_bar.setOnSeekBarChangeListener(this)
 
@@ -33,6 +32,9 @@ class RadarViewFragment : BaseFragment(), SeekBar.OnSeekBarChangeListener,
         cb_2.setOnCheckedChangeListener(this)
     }
 
+    override fun onFirstVisibleToUser() {
+        radar_view.setNewData(DataUtil.generateRandomData(100, 5))
+    }
     override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
         radar_view.setNewData(DataUtil.generateRandomData(100, progress))
     }

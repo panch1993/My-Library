@@ -5,6 +5,7 @@ import android.content.pm.ActivityInfo
 import android.content.res.Resources
 import android.os.Bundle
 import android.view.KeyEvent
+import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -63,6 +64,17 @@ abstract class BaseActivity : AppCompatActivity(), View.OnClickListener {
             return true
         }
         return super.onKeyDown(keyCode, event)
+    }
+
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            android.R.id.home -> {
+                onBackClick()
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
     }
 
     /**

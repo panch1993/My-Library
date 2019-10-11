@@ -22,7 +22,6 @@ class CardGroupFragment : BaseFragment() {
     override fun initView() {
         injectOnClick(bt_state)
 
-        cg.setData(listOf(1, 1, 1, 1, 1, 1, 1))
 //        radar_view.setNewData(DataUtil.generateRandomData(100, 5))
     }
 
@@ -40,6 +39,9 @@ class CardGroupFragment : BaseFragment() {
         }
     }
 
+    override fun onFirstVisibleToUser() {
+        cg.setData(listOf(1, 1, 1, 1, 1, 1, 1))
+    }
     override fun onVisibleToUserChanged(isVisibleToUser: Boolean, invokeInResumeOrPause: Boolean) {
         super.onVisibleToUserChanged(isVisibleToUser, invokeInResumeOrPause)
         if (isVisibleToUser) {

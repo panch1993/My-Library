@@ -16,7 +16,10 @@ import com.pan.mylibrary.R
 import com.pan.mylibrary.base.BaseActivity
 import com.pan.mylibrary.base.Config
 import com.pan.mylibrary.ui.adapter.SectionsPagerAdapter
+import com.pan.mylibrary.utils.ActManager
+import com.pan.mylibrary.utils.GlideUtil
 import com.pan.mylibrary.utils.SpUtil
+import com.pan.mylibrary.utils.ToastUtil
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.dialog_setting.view.*
 import kotlinx.android.synthetic.main.layout_drawer_head.view.*
@@ -39,10 +42,7 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
         view_pager.adapter = SectionsPagerAdapter(this, supportFragmentManager)
         view_pager.offscreenPageLimit = view_pager.adapter!!.count
         tabs.setupWithViewPager(view_pager)
-        /* fab.setOnClickListener { view ->
-             Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                 .setAction("Action", null).show()
-         }*/
+
         setSupportActionBar(tool_main)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.setDisplayShowHomeEnabled(true)
@@ -55,7 +55,9 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
 
         nav_view.setNavigationItemSelectedListener(this)
         val inflateHeaderView = nav_view.inflateHeaderView(R.layout.layout_drawer_head)
-        injectOnClick(inflateHeaderView.sdv_user)
+        injectOnClick(inflateHeaderView.iv_user)
+
+        GlideUtil.load(inflateHeaderView.iv_user,Config.HEAD_URL,asCircle = true)
     }
 
     private fun showSettingDialog() {
@@ -112,8 +114,21 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
     }
 
     override fun onClick(v: View) {
-        if (v.id == R.id.sdv_user) {
-            startActivity(LifeActivity::class.java)
+        if (v.id == R.id.iv_user) {
+//            val bundle= ActivityOptionsCompat.
+//                makeSceneTransitionAnimation(context, Pair.create(v,"target")).toBundle()
+            startActivity(Intent(context,LifeActivity::class.java)/*,bundle*/)
         }
     }
+
+    private var clickBackTimeStamp = 0L
+    override  fun onBackClick() {
+        if (System.currentTimeMillis() - clickBackTimeStamp > 2000) {//2秒内双击执行退出
+            clickBackTimeStamp = System.currentTimeMillis()
+            ToastUtil.showToast("再次点击退出应用")
+            return
+        }
+        ActManager.get().finishAll()
+    }
+
 }
