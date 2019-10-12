@@ -34,7 +34,7 @@
         </activity>
         <activity android:name=".ui.activity.ScrollableActivity" />
         <activity android:name=".ui.activity.NestedScrollableActivity" />
-        <activity android:name=".ui.activity.LifeActivity" />
+        <activity android:name=".ui.activity.DragViewActivity" />
         <activity android:name=".ui.activity.MainActivity" />
 
         <meta-data

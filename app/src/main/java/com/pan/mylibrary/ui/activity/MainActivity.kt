@@ -10,6 +10,7 @@ import android.view.View
 import android.widget.EditText
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AlertDialog
+import androidx.core.view.GravityCompat
 import com.google.android.material.navigation.NavigationView
 import com.pan.mylibrary.BuildConfig
 import com.pan.mylibrary.R
@@ -115,14 +116,16 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
 
     override fun onClick(v: View) {
         if (v.id == R.id.iv_user) {
-//            val bundle= ActivityOptionsCompat.
-//                makeSceneTransitionAnimation(context, Pair.create(v,"target")).toBundle()
-            startActivity(Intent(context,LifeActivity::class.java)/*,bundle*/)
+            startActivity(Intent(context,DragViewActivity::class.java)/*,bundle*/)
         }
     }
 
     private var clickBackTimeStamp = 0L
     override  fun onBackClick() {
+        if (drawer_layout.isDrawerOpen(GravityCompat.START)) {
+            drawer_layout.closeDrawer(GravityCompat.START)
+            return
+        }
         if (System.currentTimeMillis() - clickBackTimeStamp > 2000) {//2秒内双击执行退出
             clickBackTimeStamp = System.currentTimeMillis()
             ToastUtil.showToast("再次点击退出应用")

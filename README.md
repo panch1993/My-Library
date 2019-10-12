@@ -3,6 +3,10 @@
 #### 手势类
 1. NestedScrollableLayout
 2. ScrollableLayout
+3. DragImageView
+<center class="half">
+    <img src="https://github.com/panch1993/My-Library/blob/master/img/img_drag.gif" />
+</center>
 
 ***
 

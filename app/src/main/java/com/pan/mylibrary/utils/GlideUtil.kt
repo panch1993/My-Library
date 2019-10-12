@@ -32,8 +32,9 @@ object GlideUtil {
             .apply {
                 if (asCircle) {
 //                    apply(RequestOptions.bitmapTransform(CircleCrop()))
-                    apply(RequestOptions.bitmapTransform(
-                        CircleRoundCrop()/*object : BitmapTransformation() {
+                    apply(
+                        RequestOptions.bitmapTransform(
+                            CircleRoundCrop()/*object : BitmapTransformation() {
                         override fun updateDiskCacheKey(messageDigest: MessageDigest) {
                             messageDigest.update("circle round".toByte())
                         }
@@ -58,7 +59,9 @@ object GlideUtil {
 //                            canvas.drawCircle(circleBitmap.width/2f,circleBitmap.height/2f,50f,paint)
                             return circleBitmap
                         }
-                    }*/))
+                    }*/
+                        )
+                    )
                 }
             }
             .into(imageView)
