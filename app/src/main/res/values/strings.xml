@@ -17,6 +17,7 @@
     <string name="tab_radar">RadarView</string>
     <string name="tab_card">CardGroup</string>
     <string name="tab_time">TimeView</string>
+    <string name="tab_flutter">Flutter</string>
 
     <string name="big_card">big_card</string>
     <string name="sub_card">sub_card</string>
