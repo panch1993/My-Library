@@ -18,6 +18,7 @@
     <string name="tab_card">CardGroup</string>
     <string name="tab_time">TimeView</string>
     <string name="tab_flutter">Flutter</string>
+    <string name="tab_bezier">Bezier</string>
 
     <string name="big_card">big_card</string>
     <string name="sub_card">sub_card</string>

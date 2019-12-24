@@ -1,8 +1,8 @@
 include ':app'
-setBinding(new Binding([gradle: this]))
-evaluate(new File(
-        settingsDir.parentFile,
-        'pans_lib/.android/include_flutter.groovy'
-))
-include ':pans_lib'
-project(':pans_lib').projectDir = new File('../pans_lib')
+//setBinding(new Binding([gradle: this]))
+//evaluate(new File(
+//        settingsDir.parentFile,
+//        'pans_lib/.android/include_flutter.groovy'
+//))
+//include ':pans_lib'
+//project(':pans_lib').projectDir = new File('../pans_lib')
