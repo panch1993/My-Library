@@ -28,6 +28,9 @@ public class ZZZ {
         for (int i = test.length - 1; i >= 0; i--) {
 
         }
+        for (int i = 1; i < 100; i+=2){
+
+        }
     }
 
     static class Test{

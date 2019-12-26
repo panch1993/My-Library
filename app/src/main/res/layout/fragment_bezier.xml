@@ -9,6 +9,12 @@
         android:layout_margin="@dimen/sw_px_35"
         android:layout_weight="1"
         android:layout_height="0dp" />
+
+    <SeekBar
+        android:max="100"
+        android:id="@+id/seek_smoothness"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
     <Button
         android:text="Add"
         android:id="@+id/bt_add"
