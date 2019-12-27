@@ -108,6 +108,9 @@ class BezierView @JvmOverloads constructor(
         rect.right = w - paddingEnd
         rect.top = paddingTop
         rect.bottom = h - paddingBottom
+
+        addPoint()
+        addPoint()
     }
 
     fun addPoint() {
@@ -116,13 +119,13 @@ class BezierView @JvmOverloads constructor(
     }
 
     fun removePoint() {
-        if (points.size == 1) return
+        if (points.isEmpty()) return
         points.removeAt(points.size - 1)
         resetPoints()
     }
 
     fun resetPoints() {
-        if (points.size <= 1) return
+        if (points.isEmpty()) return
         val temp = rect.width() / (points.size - 1)
         points.forEachIndexed { index, point ->
             point.y = (rect.height() / 2f)
