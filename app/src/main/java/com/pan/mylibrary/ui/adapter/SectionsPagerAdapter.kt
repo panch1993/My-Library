@@ -14,6 +14,7 @@ private val TAB_TITLES = arrayOf(
     ,R.string.tab_radar
     ,R.string.tab_card
     ,R.string.tab_time
+    ,R.string.tab_touch
 //    ,R.string.tab_flutter
 )
 
@@ -32,6 +33,7 @@ class SectionsPagerAdapter(private val context: Context, fm: FragmentManager) :
             R.string.tab_time -> TimeViewFragment()
 //            R.string.tab_flutter -> FlutterFragment()
             R.string.tab_bezier -> BezierFragment()
+            R.string.tab_touch -> TouchFragment()
             else -> PlaceholderFragment.newInstance(position + 1)
         }
     }

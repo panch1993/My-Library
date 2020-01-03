@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <Button
+        android:id="@+id/bt_dispatch"
+        android:text="dispatch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <Button
+        android:id="@+id/bt_intercept"
+        android:text="Intercept"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <Button
+        android:id="@+id/bt_touch"
+        android:text="touch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <com.pan.mylibrary.widget.TouchLayout
+        android:id="@+id/tl"
+        android:layout_width="match_parent"
+        android:background="@color/blue_default"
+        android:layout_height="match_parent">
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="touch" />
+    </com.pan.mylibrary.widget.TouchLayout>
+</LinearLayout>

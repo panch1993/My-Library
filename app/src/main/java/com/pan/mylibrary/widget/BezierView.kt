@@ -8,6 +8,7 @@ import android.view.MotionEvent
 import android.view.View
 import java.util.*
 import kotlin.math.abs
+import kotlin.math.max
 import kotlin.math.sqrt
 
 /**
@@ -126,7 +127,7 @@ class BezierView @JvmOverloads constructor(
 
     fun resetPoints() {
         if (points.isEmpty()) return
-        val temp = rect.width() / (points.size - 1)
+        val temp = rect.width() / (max(points.size - 1,1))
         points.forEachIndexed { index, point ->
             point.y = (rect.height() / 2f)
             point.x = (rect.left + (temp * (index))).toFloat()
