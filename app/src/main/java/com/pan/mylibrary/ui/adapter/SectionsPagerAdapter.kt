@@ -9,12 +9,16 @@ import com.pan.mylibrary.base.AppPagerAdapter
 import com.pan.mylibrary.ui.fragment.*
 
 private val TAB_TITLES = arrayOf(
-    R.string.tab_bezier
-    ,R.string.tab_chart
-    ,R.string.tab_radar
-    ,R.string.tab_card
-    ,R.string.tab_time
-    ,R.string.tab_touch
+    R.string.tab_flow,
+    R.string.tab_dog,
+    R.string.tab_range_seek,
+    R.string.tab_bezier,
+    R.string.tab_chart,
+    R.string.tab_radar,
+    R.string.tab_card
+    //,R.string.tab_time
+    ,
+    R.string.tab_touch
 //    ,R.string.tab_flutter
 )
 
@@ -34,6 +38,9 @@ class SectionsPagerAdapter(private val context: Context, fm: FragmentManager) :
 //            R.string.tab_flutter -> FlutterFragment()
             R.string.tab_bezier -> BezierFragment()
             R.string.tab_touch -> TouchFragment()
+            R.string.tab_range_seek -> RangeSeekFragment()
+            R.string.tab_flow -> SimpleFragment(R.layout.fragment_flow)
+            R.string.tab_dog -> DogFragment()
             else -> PlaceholderFragment.newInstance(position + 1)
         }
     }

@@ -89,6 +89,7 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
         when (it.itemId) {
             R.id.nav_scr -> startActivity(ScrollableActivity::class.java)
             R.id.nav_nested_scr -> startActivity(NestedScrollableActivity::class.java)
+            R.id.nav_skin -> startActivity(SkinActivity::class.java)
             R.id.nav_github -> {
                 val uri = Uri.parse("https://github.com/panch1993")
                 val intent = Intent(Intent.ACTION_VIEW, uri)

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <com.pan.mylibrary.widget.rangeseek.RangeSliderView
+        android:id="@+id/rsv_small"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_margin="50dp"
+        app:filledColor="#1A5F77" />
+
+    <com.pan.mylibrary.widget.rangeseek.RangeSeekBar
+        android:layout_width="match_parent"
+        android:layout_margin="50dp"
+        app:seekHeight="@dimen/dp_4"
+        app:normalColor="#F2F5F7"
+        app:primaryColor="#07B175"
+        app:cirRadius="@dimen/dp_4"
+        android:background="@color/blue_default"
+        android:layout_height="50dp" />
+</LinearLayout>

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <com.pan.mylibrary.widget.flowlayout.FlowLayout
+        android:layout_width="match_parent"
+        android:background="@color/cardview_dark_background"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/blue_default"
+            android:text="薪必备：高级UI实战教学合集"
+            android:textColor="@color/white" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/colorAccent"
+            android:text="薪必备：高级UI实战教学合集"
+            android:textColor="@color/white" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="5sp"
+            android:background="@color/btn_filled_blue_bg_normal"
+            android:text="Hahah"
+            android:textColor="@color/white" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/blue_default"
+            android:text="薪必备：高级UI实战教学合集"
+            android:textColor="@color/white" />
+
+    </com.pan.mylibrary.widget.flowlayout.FlowLayout>
+
+    <!--<ImageView
+        android:layout_width="match_parent"
+        android:src="@drawable/face"
+        android:layout_height="wrap_content" />
+
+    <ImageView
+        android:id="@+id/iv1"
+        android:layout_width="wrap_content"
+        android:src="@drawable/red"
+        android:rotation="30"
+        android:layout_marginTop="@dimen/sw_px_370"
+        android:layout_height="wrap_content" />
+    <ImageView
+        android:id="@+id/iv2"
+        android:layout_width="wrap_content"
+        android:src="@drawable/red"
+        android:layout_marginStart="@dimen/sw_px_350"
+        android:rotation="30"
+        android:layout_marginTop="@dimen/sw_px_370"
+        android:layout_height="wrap_content" />-->
+</FrameLayout>

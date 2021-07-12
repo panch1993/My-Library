@@ -24,4 +24,9 @@
     <color name="gray_f9">#f9f9f9</color>
     <color name="gray_fe">#fefefe</color>
     <color name="white">#fff</color>
+
+
+    <color name="light">#fff</color>
+
+
 </resources>

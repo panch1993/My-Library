@@ -1,33 +1,67 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
     <com.pan.mylibrary.widget.BezierView
         android:id="@+id/bezier_view"
         android:layout_width="match_parent"
+        android:layout_height="0dp"
         android:layout_margin="@dimen/sw_px_35"
-        android:layout_weight="1"
-        android:layout_height="0dp" />
+        android:layout_weight="1" />
 
     <SeekBar
-        android:max="100"
         android:id="@+id/seek_smoothness"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-    <Button
-        android:text="Add"
-        android:id="@+id/bt_add"
+        android:layout_height="wrap_content"
+        android:max="100" />
+
+
+    <com.qmuiteam.qmui.layout.QMUIFrameLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content">
+
+        <com.qmuiteam.qmui.widget.roundwidget.QMUIRoundButton
+            android:id="@+id/bt_add"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:padding="15dp"
+            android:text="Add"
+            app:qmui_borderColor="@color/red_default"
+            app:qmui_radius="4dp" />
+
+    </com.qmuiteam.qmui.layout.QMUIFrameLayout>
+
     <Button
-        android:text="Remove"
         android:id="@+id/bt_remove"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:text="Remove" />
+
     <Button
-        android:text="Reset"
         android:id="@+id/bt_reset"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:text="Reset" />
+
+
+    <com.qmuiteam.qmui.layout.QMUIFrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.qmuiteam.qmui.widget.roundwidget.QMUIRoundButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:paddingLeft="16dp"
+            android:paddingTop="10dp"
+            android:paddingRight="16dp"
+            android:paddingBottom="10dp"
+            android:text="圆角为短边的一半"
+            app:qmui_isRadiusAdjustBounds="true" />
+
+    </com.qmuiteam.qmui.layout.QMUIFrameLayout>
 </LinearLayout>

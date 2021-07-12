@@ -14,4 +14,21 @@
             <enum name="msec" value="6" />
         </attr>
     </declare-styleable>
+    <declare-styleable name="RangeSliderView">
+        <attr name="rangeCount" format="integer" />
+        <attr name="filledColor" format="color" />
+        <attr name="emptyColors" format="color" />
+        <attr name="barHeightPercent" format="float" />
+        <attr name="slotRadiusPercent" format="float" />
+        <attr name="sliderRadiusPercent" format="float" />
+    </declare-styleable>
+
+    <declare-styleable name="RangeSeekBar">
+        <attr name="cirCount" format="integer" />
+        <attr name="cirRadius" format="dimension" />
+        <attr name="primaryColor" format="color" />
+        <attr name="normalColor" format="color" />
+        <attr name="seekHeight" format="dimension" />
+    </declare-styleable>
+
 </resources>

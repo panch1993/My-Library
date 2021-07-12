@@ -28,6 +28,5 @@ public class AppContext extends Application {
         SpUtil.get().init(sp);
 
         Config.reload();
-
     }
 }

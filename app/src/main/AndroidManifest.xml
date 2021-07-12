@@ -36,6 +36,7 @@
         <activity android:name=".ui.activity.NestedScrollableActivity" />
         <activity android:name=".ui.activity.DragViewActivity" />
         <activity android:name=".ui.activity.MainActivity" />
+        <activity android:name=".ui.activity.SkinActivity" />
 
         <meta-data
                 android:name="android.max_aspect"

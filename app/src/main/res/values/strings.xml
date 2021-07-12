@@ -20,6 +20,9 @@
     <string name="tab_touch">Touch</string>
     <string name="tab_flutter">Flutter</string>
     <string name="tab_bezier">Bezier</string>
+    <string name="tab_range_seek">RangeSeek</string>
+    <string name="tab_dog">Dog</string>
+    <string name="tab_flow">FlowLayout</string>
 
     <string name="big_card">big_card</string>
     <string name="sub_card">sub_card</string>

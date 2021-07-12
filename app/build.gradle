@@ -8,7 +8,7 @@ android {
     compileSdkVersion 28
     defaultConfig {
         applicationId "com.pan.mylibrary"
-        minSdkVersion 18
+        minSdkVersion 19
         targetSdkVersion 28
         versionCode 1
         versionName "1.0"
@@ -49,7 +49,11 @@ android {
         sourceCompatibility = 1.8
         targetCompatibility = 1.8
     }
-
+    sourceSets {
+        main {
+            res.srcDirs = ['src/main/res', 'src/main/res-night']
+        }
+    }
 }
 
 static def getDate() {
@@ -88,4 +92,5 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-extensions:$lifecycle_version"
     // Optional : Kotlin extension (https://d.android.com/kotlin/ktx)
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
+    implementation 'com.qmuiteam:qmui:2.0.0-alpha08'
 }
